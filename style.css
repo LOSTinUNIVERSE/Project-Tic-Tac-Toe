@@ -1,0 +1,33 @@
+#container {
+  width: 100vw;
+  height: 100vh;
+  background-color: darkslateblue;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 5fr 1fr;
+}
+#sidebar {
+  grid-area: 1/1/-1/2;
+  background-color: darkolivegreen;
+}
+header {
+  grid-area: 1/2/2/-1;
+  background-color: darkslategray;
+}
+main {
+  grid-area: 2/2/-2/-1;
+  background-color: darkviolet;
+  display: grid;
+  /* justify-content: center; */
+  justify-items: center;
+  align-items: center;
+}
+#gameBox {
+  background-color: black;
+  width: 60%;
+  height: 80%;
+}
+footer {
+  grid-area: -2/1/-1/-1;
+  background-color: lightseagreen;
+}
