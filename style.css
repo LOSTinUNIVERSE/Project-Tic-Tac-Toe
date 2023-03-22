@@ -13,6 +13,11 @@
 header {
   grid-area: 1/2/2/-1;
   background-color: darkslategray;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-auto-flow: column;
+  gap: 10px;
 }
 main {
   grid-area: 2/2/-2/-1;
@@ -23,11 +28,28 @@ main {
   align-items: center;
 }
 #gameBox {
-  background-color: black;
+  background-color: rgb(65, 62, 62);
   width: 60%;
   height: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
 }
 footer {
   grid-area: -2/1/-1/-1;
   background-color: lightseagreen;
+}
+.boxes {
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  font-size: 30px;
+}
+button {
+  width: 5rem;
+  height: 2rem;
 }
