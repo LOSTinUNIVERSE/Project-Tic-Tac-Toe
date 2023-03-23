@@ -29,7 +29,14 @@ const GameBoard = (() => {
         // obtn.addEventListener("click", chooseTool)
     }
     const defineWinner = () => {
-        const arr = []
+        const arr = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ]
         function checker() {
             for (let i = 1; i <= 3; i++) {
                 const box = document.querySelector(`[data-number='${i}']`)
@@ -68,6 +75,7 @@ const GameBoard = (() => {
         function addText() {
             if (number == 9) {
                 defineWinner()
+                checker()
                 return false
             }
             if (this.textContent) {
@@ -96,33 +104,45 @@ GameBoard.btnScore()
 GameBoard.changeBoxes()
 GameBoard.defineWinner()
 
-// const defineWinner = () => {
-// const number = 1
-// if (number = 1) {
-// number2 + 2
-// } else if (number = 4) {
-// number2 = 6
-// }
-// 
-// 
-// else if
-// 
-// const number2 = number + 3
-// const arr = []
-// function checker = {
-// for (let i = number; i <= 3; i++) {
-// const box = document.querySelector(`[data-number='${i}']`)
-// arr.push(box.textContent)
-// }
-// }
-// const areEqual = arr.every(item => item == arr[0])
-// }
 
-const obj = {
-    case1: [1, 2, 3],
-    case2: [4, 5, 6],
-    case3: [7, 8, 9],
-    case4: [1, 4, 7],
-    case5: [2, 5, 8],
-    case6: [3, 6, 9],
+
+
+//  * here is the method to check for array above
+// for (let i = 0; i < 6; i++) {
+//     const areEqual = array[i].every(item => item === array[i][0])
+//     console.log(array[i])
+//     console.log(areEqual);
+// }
+const arr = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+]
+const array = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
+]
+// console.log("numbers 0 0 is", numbers[0][]);
+function checker() {
+    for (let b = 0; b <= 7; b++) {
+        for (let i = 0; i <= 2; i++) {
+            const box = document.querySelector(`[data-number='${array[b][i]}']`)
+            // console.log(box);
+            arr[b].push(box.textContent)
+        }
+    }
+    console.log(arr);
 }
+// checker()
+// console.log(arr);
