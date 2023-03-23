@@ -8,7 +8,10 @@
 }
 #sidebar {
   grid-area: 1/1/-1/2;
-  background-color: darkolivegreen;
+  background-color: rgb(59, 20, 52);
+  display: grid;
+  justify-items: center;
+  align-items: center;
 }
 header {
   grid-area: 1/2/2/-1;
@@ -28,17 +31,18 @@ main {
   align-items: center;
 }
 #gameBox {
-  background-color: rgb(65, 62, 62);
+  background-color: rgb(53, 16, 48);
   width: 60%;
   height: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
+  border-radius: 20px;
 }
 footer {
-  grid-area: -2/1/-1/-1;
-  background-color: lightseagreen;
+  grid-area: -2/2/-1/-1;
+  background-color: rgb(50, 20, 66);
 }
 .boxes {
   border: 1px solid white;
@@ -47,9 +51,35 @@ footer {
   display: grid;
   justify-items: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 40px;
+  border-radius: 20px;
 }
 button {
-  width: 5rem;
+  width: 6rem;
+  height: 3rem;
+  color: white;
+  font-size: 24px;
+  background-color: indianred;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+input {
+  width: 15rem;
   height: 2rem;
+  background-color: blueviolet;
+  font-size: 24px;
+  color: 2px white;
+  border-radius: 20px;
+}
+
+#sidebar > h1 {
+  display: grid;
+  justify-content: center;
+  justify-self: center;
+  align-content: center;
+  width: 50%;
+  height: 50%;
+  font-size: 24px;
+  background-color: rgb(217, 255, 255);
+  border-radius: 20px;
 }

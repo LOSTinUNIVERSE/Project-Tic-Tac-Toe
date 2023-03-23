@@ -1,34 +1,15 @@
 const Player = (name, tool, value) => ({ name, tool, value })
 const GameBoard = (() => {
-
+    const display = document.createElement("h1")
+    display.id = "display"
+    display.style.display = "none"
+    const sidebar = document.querySelector("#sidebar")
+    sidebar.appendChild(display)
+    let winner = ""
     const player1 = Player("", "x", 1)
     const player2 = Player("", "o", 2)
-    // let containerX = ""
-    // let containero = ""
     let store = [];
     const boxes = document.getElementsByClassName("boxes")
-    const btnScore = () => {
-        const header = document.querySelector("header")
-        const askForTool = document.createElement("button")
-        // askForTool.addEventListener("click", chooseTool)
-        askForTool.textContent = "weapon"
-        header.appendChild(askForTool)
-        const chooseTool = () => {
-            header.appendChild(xbtn)
-            header.appendChild(obtn)
-            xbtn.value = "x"
-            obtn.value = "o"
-            xbtn.textContent = "player 1 is x"
-            // containerX = xbtn.value
-            // containero = obtn.value
-            obtn.textContent = "player 2 is o"
-            askForTool.style.display = "none"
-        }
-        const xbtn = document.createElement("button")
-        const obtn = document.createElement("button")
-        askForTool.addEventListener("click", chooseTool)
-    }
-
     const createDivs = () => {
         for (let i = 1; i <= 9; i++) {
             const box = document.createElement("div")
@@ -49,7 +30,7 @@ const GameBoard = (() => {
         }
         function checkName() {
             if (player1.name == "" || player2.name == "") {
-                alert("enter your name honey)")
+                alert("enter your name)")
                 return false
             }
         }
@@ -72,6 +53,7 @@ const GameBoard = (() => {
                 this.textContent = player1.tool
             }
             store.push(this.textContent)
+            defineWinner()
             // console.log(store);
         }
     }
@@ -84,6 +66,7 @@ const GameBoard = (() => {
             [1, 4, 7], [2, 5, 8], [3, 6, 9],
             [1, 5, 9], [3, 5, 7]
         ]
+
         function checker() {
             for (let b = 0; b <= 7; b++) {
                 for (let i = 0; i <= 2; i++) {
@@ -91,23 +74,40 @@ const GameBoard = (() => {
                     arr[b].push(box.textContent)
                 }
             }
-            console.log(arr);
+            // console.log(arr);
         }
         checker()
+
+        let congratulations = ""
+        function showDisplay() {
+            const gamebox = document.getElementById("gameBox")
+            display.style.display = "grid"
+            display.textContent = congratulations
+        }
         function checkWinner() {
-            let winner = ""
+            if (number == 9) {
+                return false
+            }
             for (let i = 0; i <= 7; i++) {
                 const areEqual = arr[i].every(item => item === arr[i][0])
                 if (areEqual == true) {
-                    winner = arr[i][1]
+                    // console.log(i, "true");
+                    winner = arr[i][0]
+                    console.log(winner);
+                    if (winner == "x") {
+                        console.log(player1.name, " wins")
+                        congratulations = `${player1.name} wins`
+                        showDisplay();
+                        number = 9
+                    }
+                    else if (winner == "o") {
+                        console.log(player2.name, "wins");
+                        congratulations = `${player2.name} wins`
+                        showDisplay()
+                        number = 9
+                    }
+
                 }
-            }
-            if (winner == "x") {
-                console.log(player1.name, " wins");
-            } else if (winner == "o") {
-                console.log(player2.name, "wins");
-            } else if (winner == "") {
-                console.log(draw);
             }
         }
         checkWinner()
@@ -119,21 +119,26 @@ const GameBoard = (() => {
             number = 0
             player1.name = ""
             player1.name = ""
+            winner = ""
             for (let i = 0; i <= 8; i++) {
                 boxes[i].textContent = ""
             }
+            const gameBox = document.getElementById("gameBox")
+            gameBox.style.display = "grid"
+            display.style.display = "none"
+            display.textContent = ""
+
         }
         let num = 1
         function namer() {
             if (num == 1) {
                 player1.name = input.value
                 num = 2
-                // console.log(input.value);
-                // console.log(player1.name);
+                input.value = ""
             } else if (num == 2) {
                 player2.name = input.value
-                // console.log(input.value);
-                // console.log(player2.name);
+                input.value = ""
+                num = 1
 
             }
 
@@ -150,9 +155,9 @@ const GameBoard = (() => {
         header.appendChild(submitName)
         submitName.addEventListener("click", namer)
     }
-    return { defineWinner, createDivs, btnScore, changeBoxes, restart }
+    return { defineWinner, createDivs, changeBoxes, restart }
 })()
 GameBoard.createDivs()
-GameBoard.btnScore()
 GameBoard.changeBoxes()
 GameBoard.restart()
+// GameBoard.defineWinner()
