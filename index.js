@@ -28,11 +28,23 @@ const GameBoard = (() => {
         // xbtn.addEventListener("click", chooseTool)
         // obtn.addEventListener("click", chooseTool)
     }
-    const render = () => {
+    const defineWinner = () => {
+        const arr = []
+        function checker() {
+            for (let i = 1; i <= 3; i++) {
+                const box = document.querySelector(`[data-number='${i}']`)
+                arr.push(box.textContent)
+            }
+        }
+        checker()
+        // const areEqual = arr.every(item => item == arr[0])
+        // console.log(areEqual);
+        // console.log(arr);
     }
     const createDivs = () => {
-        for (let i = 0; i < 9; i++) {
+        for (let i = 1; i <= 9; i++) {
             const box = document.createElement("div")
+            box.dataset.number = i
             box.classList = "boxes"
             gameBox.appendChild(box)
         }
@@ -55,11 +67,12 @@ const GameBoard = (() => {
         }
         function addText() {
             if (number == 9) {
+                defineWinner()
                 return false
             }
             if (this.textContent) {
                 return false;
-            } console.log(1);
+            }/*  console.log(1) */;
             number++
             if (evenOrOdd() == "false") {
                 this.textContent = player1.tool
@@ -68,20 +81,48 @@ const GameBoard = (() => {
                 this.textContent = player2.tool
             }
             store.push(this.textContent)
-            console.log(store);
+            // console.log(store);
         }
     }
 
-    return { render, createDivs, btnScore, changeBoxes }
+    return { defineWinner, createDivs, btnScore, changeBoxes }
 })()
 
+// const array = ["x", "x", "l"]
+// const allEqual = array.every(v => v === array[0])
+// console.log(allEqual);
 GameBoard.createDivs()
-// GameBoard.render()
 GameBoard.btnScore()
 GameBoard.changeBoxes()
+GameBoard.defineWinner()
 
-// const Player = (name, tool) => {
-    // console.log(this.name);
-    // return { name, tool }
+// const defineWinner = () => {
+// const number = 1
+// if (number = 1) {
+// number2 + 2
+// } else if (number = 4) {
+// number2 = 6
+// }
+// 
+// 
+// else if
+// 
+// const number2 = number + 3
+// const arr = []
+// function checker = {
+// for (let i = number; i <= 3; i++) {
+// const box = document.querySelector(`[data-number='${i}']`)
+// arr.push(box.textContent)
+// }
+// }
+// const areEqual = arr.every(item => item == arr[0])
 // }
 
+const obj = {
+    case1: [1, 2, 3],
+    case2: [4, 5, 6],
+    case3: [7, 8, 9],
+    case4: [1, 4, 7],
+    case5: [2, 5, 8],
+    case6: [3, 6, 9],
+}
